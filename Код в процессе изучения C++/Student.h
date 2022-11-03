@@ -74,7 +74,7 @@ namespace student {
     vector <Student> generateDB(int N) {
         vector <Student> studentsDB;
         vector <string> manNames = { "Миша", "Никита", "Данил", "Ислам", "Кирилл", "Артемий", "Алексей", "Арсений"};
-        vector <string> womanNames = { "Ксюша", "Арина", "Карина", "Даша", "Юля", "Оля", "Полина" };
+        vector <string> womanNames = { "Ксюша", "Арина", "Карина", "Даша", "Юля", "Оля", "Полина", "Лилит", "Эвелина", "Роза"};
         vector <string> manSurnames = { "Дёмин", "Владимиров", "Филипов", "Кузьмин", "Федосеев", "Таркаев", "Имулин" };
         vector <string> womanSurnames = { "Юматова", "Алошкина", "Кузьмина", "Тамарова", "Анискина", "Владимирова", "Фалена" };
 
