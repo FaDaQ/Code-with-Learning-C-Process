@@ -16,15 +16,30 @@ public:
 		result = numer / denumer;
 		numerLen = countNumsInNum(numer);
 		denumerLen = countNumsInNum(denumer);
-
-		spaceCount = numerLen >= denumerLen ? numerLen - (denumerLen - 1) : denumerLen - (numerLen - 1);
-		dividerStrip = numerLen >= denumerLen ? multStr("--", numerLen) : multStr("--", denumerLen);
+		
+		setSpaces();
+		setDeviderStrip();
 	}
 
 	void print() {
-		cout << multStr(" ", spaceCount) << numer << "\n" + dividerStrip + "\n" << multStr(" ", spaceCount) << denumer;
+		cout << spaces << numer << "\n" + dividerStrip + "\n" << spaces << denumer;
 	}
 
+	string getDivStrip() {
+		return dividerStrip;
+	}
+	string getSpaces() {
+		return spaces;
+	}
+	int getSpaceCount() {
+		return spaceCount;
+	}
+	double getNumerator() {
+		return numer;
+	}
+	double getDenumrator() {
+		return denumer;
+	}
 	double getResult() {
 		return result;
 	}
@@ -37,5 +52,15 @@ private:
 	int denumerLen;
 	string dividerStrip;
 	int spaceCount;
+	//Это пробелы, которые нужны для отступов во время вывода дроби на экран
+	string spaces;
+
+	void setSpaces() {
+		spaceCount = numerLen >= denumerLen ? numerLen - (denumerLen - 1) : denumerLen - (numerLen - 1);
+		spaces = multStr(" ", spaceCount);
+	}
+	void setDeviderStrip() {
+		dividerStrip = numerLen >= denumerLen ? multStr("--", numerLen) : multStr("--", denumerLen);
+	}
 };
 
