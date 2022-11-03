@@ -11,7 +11,7 @@ int main()
     system("chcp 1251"); system("cls");
 
     
-    Friction test(21, 711);
+    Friction test(21, 7113);
     test.print();
 
 
