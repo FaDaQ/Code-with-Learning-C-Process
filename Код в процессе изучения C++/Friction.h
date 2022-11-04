@@ -22,8 +22,12 @@ namespace friction {
 			setDeviderStrip();
 		}
 
-		void print() {
-			cout << spaces << numer << "\n" + dividerStrip + "\n" << spaces << denumer;
+		void print(string opt = "") {
+			cout << spaces << numer;
+			moveCursor(getCurPos().X - spaceCount - numerLen, getCurPos().Y + 1);
+			cout << dividerStrip + opt;
+			moveCursor(getCurPos().X - dividerStrip.length(), getCurPos().Y + 1);
+			cout << spaces << denumer;
 		}
 
 		string getDivStrip() {
@@ -35,7 +39,7 @@ namespace friction {
 		double getNumerator() {
 			return numer;
 		}
-		double getDenumerator() {
+		double getDenumrator() {
 			return denumer;
 		}
 		double getResult() {
@@ -62,22 +66,12 @@ namespace friction {
 		}
 	};
 
+
 	void printFrictionsVector(vector <Friction> frictionVec) {
 		for (Friction i : frictionVec) {
-			cout << i.getSpaces() << i.getNumerator() << i.getSpaces();
-			moveCursor(getCursorPos().X + 4, getCursorPos().Y);
+			i.print();
+			moveCursor(getCurPos().X + 5, getCurPos().Y - 2);
 		}
-		cout << endl;
-
-		for (Friction i : frictionVec) {
-			cout << i.getDivStrip() << i.getSpaces();
-			moveCursor(getCursorPos().X + 3, getCursorPos().Y);
-		}
-		cout << endl;
-
-		for (Friction i : frictionVec) {
-			cout << i.getSpaces() << i.getDenumerator() << i.getSpaces();
-			moveCursor(getCursorPos().X + 4, getCursorPos().Y);
-		}
+		cout << "\n\n\n";
 	}
 }

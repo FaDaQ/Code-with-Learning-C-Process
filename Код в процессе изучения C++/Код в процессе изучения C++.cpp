@@ -14,9 +14,11 @@ int main()
 
     vector <Friction> frictVec;
 
-    for (int i = 0; i < 5; i++) {
-        frictVec.push_back(Friction(randint(10, 20), randint(10, 23)));
+    for (int i = 0; i < 10; i++) {
+        frictVec.push_back(Friction(randint(10, 20), randint(12, 20)));
     }
+    
+
     printFrictionsVector(frictVec);
 
     return 0;

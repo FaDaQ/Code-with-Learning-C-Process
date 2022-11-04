@@ -248,7 +248,7 @@ namespace myDoodles {
         return round(num * temp) / temp;
     }
 
-    COORD getCursorPos() // получение текущей позиции курсора
+    COORD getCurPos() // получение текущей позиции курсора
     {
         CONSOLE_SCREEN_BUFFER_INFO buf; // объ€вл€ем переменную, котора€ содержит информацию об экранном буфере консоли
         COORD coord_new = { 0,0 }; // объ€вл€ем структуру, котора€ будет хранить текущие координаты консоли
