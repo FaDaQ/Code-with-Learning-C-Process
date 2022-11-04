@@ -7,6 +7,7 @@
 #include <random>
 #include <format>
 #include <iterator>
+#include <Windows.h>
 #define _USE_MATH_DEFINES
 #include <math.h>
 
@@ -245,5 +246,34 @@ namespace myDoodles {
     double mround(double num, int N) {
         int temp = degr(10, N);
         return round(num * temp) / temp;
+    }
+
+    COORD getCursorPos() // получение текущей позиции курсора
+    {
+        CONSOLE_SCREEN_BUFFER_INFO buf; // объявляем переменную, которая содержит информацию об экранном буфере консоли
+        COORD coord_new = { 0,0 }; // объявляем структуру, которая будет хранить текущие координаты консоли
+        // по умолчанию выставим нули(в случае неудачи вернем сразу же)
+
+        // вызываем функцию, которая извлекает информацию о  текущем экранном буфере консоли
+        // если успех - возвращает текущий буфер
+        // неудача - вернет 0
+        if (GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &buf))
+            // аргументы: дескриптор экранного буфера, и переменная, которая содержит информацию об экранном буфере консоли
+        {
+            coord_new.X = buf.dwCursorPosition.X; // получаем координату x из буфера
+            coord_new.Y = buf.dwCursorPosition.Y; // получаем координату y из буфера
+            return coord_new; // и возвращаем полученные координаты
+        }
+        // если неудача, то вернем наши нули
+        return coord_new;
+    }
+
+    void moveCursor(COORD coord) // изменение текущей позиции курсора
+    {
+        COORD new_pos; // структура позиции, будет хранить новую позицию
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);  // Получение дескриптора устройства стандартного вывода
+        new_pos.X = coord.X;    // Установка координаты X
+        new_pos.Y = coord.Y;    // Установка координаты Y
+        SetConsoleCursorPosition(hConsole, coord);      // Перемещение каретки по заданным координатам
     }
 }

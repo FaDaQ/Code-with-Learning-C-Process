@@ -7,60 +7,74 @@
 using namespace std;
 using namespace myDoodles;
 
-class Friction
-{
-public:
-	Friction(double numerator, double denumerator) {
-		numer = numerator;
-		denumer = denumerator;
-		result = numer / denumer;
-		numerLen = countNumsInNum(numer);
-		denumerLen = countNumsInNum(denumer);
-		
-		setSpaces();
-		setDeviderStrip();
-	}
+namespace friction {
+	class Friction
+	{
+	public:
+		Friction(double numerator, double denumerator) {
+			numer = numerator;
+			denumer = denumerator;
+			result = numer / denumer;
+			numerLen = countNumsInNum(numer);
+			denumerLen = countNumsInNum(denumer);
 
-	void print() {
-		cout << spaces << numer << "\n" + dividerStrip + "\n" << spaces << denumer;
-	}
+			setSpaces();
+			setDeviderStrip();
+		}
 
-	string getDivStrip() {
-		return dividerStrip;
-	}
-	string getSpaces() {
-		return spaces;
-	}
-	int getSpaceCount() {
-		return spaceCount;
-	}
-	double getNumerator() {
-		return numer;
-	}
-	double getDenumrator() {
-		return denumer;
-	}
-	double getResult() {
-		return result;
-	}
+		void print() {
+			cout << spaces << numer << "\n" + dividerStrip + "\n" << spaces << denumer;
+		}
 
-private:
-	double numer;
-	double denumer;
-	double result;
-	int numerLen;
-	int denumerLen;
-	string dividerStrip;
-	int spaceCount;
-	//Это пробелы, которые нужны для отступов во время вывода дроби на экран
-	string spaces;
+		string getDivStrip() {
+			return dividerStrip;
+		}
+		string getSpaces() {
+			return spaces;
+		}
+		int getSpaceCount() {
+			return spaceCount;
+		}
+		double getNumerator() {
+			return numer;
+		}
+		double getDenumrator() {
+			return denumer;
+		}
+		double getResult() {
+			return result;
+		}
 
-	void setSpaces() {
-		spaceCount = numerLen >= denumerLen ? numerLen - (denumerLen - 1) : denumerLen - (numerLen - 1);
-		spaces = multStr(" ", spaceCount);
-	}
-	void setDeviderStrip() {
-		dividerStrip = numerLen >= denumerLen ? multStr("--", numerLen) : multStr("--", denumerLen);
-	}
-};
+	private:
+		double numer;
+		double denumer;
+		double result;
+		int numerLen;
+		int denumerLen;
+		string dividerStrip;
+		int spaceCount;
+		//Это пробелы, которые нужны для отступов во время вывода дроби на экран
+		string spaces;
 
+		void setSpaces() {
+			spaceCount = numerLen >= denumerLen ? numerLen - (denumerLen - 1) : denumerLen - (numerLen - 1);
+			spaces = multStr(" ", spaceCount);
+		}
+		void setDeviderStrip() {
+			dividerStrip = numerLen >= denumerLen ? multStr("--", numerLen) : multStr("--", denumerLen);
+		}
+	};
+
+	void printFrictionsVector(vector <Friction> frictionVec) {
+		for (Friction i : frictionVec)
+			i.getDivStrip().length() >= 8 ? cout << i.getSpaces() << i.getNumerator() << "\t\t" : cout << i.getSpaces() << i.getNumerator() << "\t";
+		cout << endl;
+
+		for (Friction i : frictionVec)
+			cout << i.getDivStrip() << "\t";
+		cout << endl;
+
+		for (Friction i : frictionVec)
+			i.getDivStrip().length() >= 8 ? cout << i.getSpaces() << i.getDenumrator() << "\t\t" : cout << i.getSpaces() << i.getDenumrator() << "\t";
+	}
+}
