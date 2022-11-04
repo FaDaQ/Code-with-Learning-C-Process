@@ -67,10 +67,10 @@ namespace friction {
 	};
 
 
-	void printFrictionsVector(vector <Friction> frictionVec) {
+	void printFrictionsVector(vector <Friction> frictionVec, int N = 6) {
 		for (Friction i : frictionVec) {
 			i.print();
-			moveCursor(getCurPos().X + 5, getCurPos().Y - 2);
+			moveCursor(getCurPos().X + N, getCurPos().Y - 2);
 		}
 		cout << "\n\n\n";
 	}
