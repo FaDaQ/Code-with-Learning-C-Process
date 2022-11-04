@@ -268,8 +268,9 @@ namespace myDoodles {
         return coord_new;
     }
 
-    void moveCursor(COORD coord) // изменение текущей позиции курсора
+    void moveCursor(int X, int Y) // изменение текущей позиции курсора
     {
+        COORD coord = { X, Y };
         COORD new_pos; // структура позиции, будет хранить новую позицию
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);  // Получение дескриптора устройства стандартного вывода
         new_pos.X = coord.X;    // Установка координаты X

@@ -32,13 +32,10 @@ namespace friction {
 		string getSpaces() {
 			return spaces;
 		}
-		int getSpaceCount() {
-			return spaceCount;
-		}
 		double getNumerator() {
 			return numer;
 		}
-		double getDenumrator() {
+		double getDenumerator() {
 			return denumer;
 		}
 		double getResult() {
@@ -66,15 +63,21 @@ namespace friction {
 	};
 
 	void printFrictionsVector(vector <Friction> frictionVec) {
-		for (Friction i : frictionVec)
-			i.getDivStrip().length() >= 8 ? cout << i.getSpaces() << i.getNumerator() << "\t\t" : cout << i.getSpaces() << i.getNumerator() << "\t";
+		for (Friction i : frictionVec) {
+			cout << i.getSpaces() << i.getNumerator() << i.getSpaces();
+			moveCursor(getCursorPos().X + 4, getCursorPos().Y);
+		}
 		cout << endl;
 
-		for (Friction i : frictionVec)
-			cout << i.getDivStrip() << "\t";
+		for (Friction i : frictionVec) {
+			cout << i.getDivStrip() << i.getSpaces();
+			moveCursor(getCursorPos().X + 3, getCursorPos().Y);
+		}
 		cout << endl;
 
-		for (Friction i : frictionVec)
-			i.getDivStrip().length() >= 8 ? cout << i.getSpaces() << i.getDenumrator() << "\t\t" : cout << i.getSpaces() << i.getDenumrator() << "\t";
+		for (Friction i : frictionVec) {
+			cout << i.getSpaces() << i.getDenumerator() << i.getSpaces();
+			moveCursor(getCursorPos().X + 4, getCursorPos().Y);
+		}
 	}
 }
