@@ -14,6 +14,14 @@ using myDoodles::multStr;
 namespace matrix {
     class Matrix {
     public:
+        //Конструкторы матрицы
+        Matrix() {}
+        Matrix(string param) {
+            if (param == "gen") {
+                generate(10, 99, 10, 10);
+            }
+        }
+
         //Перегрузка метода для введения данных в матрицу вручную
         void setMatrix() {
             cout << "Введите количество строчек массива: ";
@@ -40,6 +48,10 @@ namespace matrix {
             row = matrix.size();
             column = matrix.at(0).size();
             arr = matrix;
+        }
+
+        vector <double> getRow(int rowN) {
+            return arr.at(rowN);
         }
 
         //Генерирует матрицу по заданным параметрам

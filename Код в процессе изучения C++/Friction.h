@@ -1,8 +1,6 @@
 #pragma once
 #include <iostream>
-#define BOOST
 #include "myFunc.h"
-#define BOOST
 
 using namespace std;
 using namespace myDoodles;
@@ -69,7 +67,7 @@ namespace friction {
 
 	void printFrictionsVector(vector <Friction> frictionVec, int N = 6) {
 		for (Friction i : frictionVec) {
-			i.print();
+			i.print("+");
 			moveCursor(getCurPos().X + N, getCurPos().Y - 2);
 		}
 		cout << "\n\n\n";
