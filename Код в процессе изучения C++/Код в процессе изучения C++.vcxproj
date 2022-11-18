@@ -136,6 +136,7 @@
     <ClInclude Include="Matrix.h" />
     <ClInclude Include="myFunc.h" />
     <ClInclude Include="Student.h" />
+    <ClInclude Include="Weapons.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
